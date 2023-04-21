@@ -9,9 +9,10 @@ with mysql.connector.connect(user='root', password='admin', host='localhost', da
         reading = csv.DictReader(f)
 
         for row in reading:
+            city_name = row['city_ascii'].replace("'", " ")
             sql = f"""INSERT INTO
-            c_c(country)
-            VALUES('{row["country"]}');
+            countries_capitals(country, city, capital)
+            VALUES('{row['country']}', '{city_name}', '{row['capital']}');
             """
             cursor.execute(sql)
 
