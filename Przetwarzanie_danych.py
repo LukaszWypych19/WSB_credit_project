@@ -1,9 +1,19 @@
 import csv
 import mysql.connector
-
 # import json
 
+ktora_baza = int(input('Do której bazy danych chcesz wyeksportować dane?: '))
+
+if ktora_baza == 1:
+
+
+
+# lokalna baza danych
 with mysql.connector.connect(user='root', password='admin', host='localhost', database='filip') as connection:
+    cursor = connection.cursor()
+
+# baza danych online - https://www.freemysqlhosting.net
+with mysql.connector.connect(user='sql7614159', password='1zs2QJ8BT1', host='sql7.freemysqlhosting.net', database='sql7614159') as connection:
     cursor = connection.cursor()
 
     # czytamy plik csv za pomoca metody dictreader
@@ -20,6 +30,7 @@ with mysql.connector.connect(user='root', password='admin', host='localhost', da
                 list_of_c_c = [row['country'], city_name, row['capital']]
                 # print(list_of_c_c)
 
+            # local database - "filip"
                 sql = f"""INSERT INTO
                 countries_capitals(country, city, capital)
                 VALUES('{list_of_c_c[0]}', '{city_name}', '{list_of_c_c[2]}');
