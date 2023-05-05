@@ -1,0 +1,6 @@
+<b>Pytanie:</b> {{ pytanie.question_text }}
+<ul>
+   {% for odpowiedz in lista_odpowiedzi %}
+        <li>{{ odpowiedz.choice_text }} - <i>liczba glosow: {{ odpowiedz.votes }}</i> </li>
+      {% endfor %}
+</ul>

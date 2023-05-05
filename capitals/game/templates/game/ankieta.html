@@ -1,0 +1,12 @@
+<b>Pytanie:</b> {{ pytanie.question_text }}
+Wybierz swoja odpowiedz:
+<ul>
+   {% for odpowiedz in pytanie.choice_set.all %}
+        <li><a href="{% url 'glosowanie' odpowiedz.id %}">Zaglosuj na: {{ odpowiedz.choice_text }}</a></li>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="nr_odp" value="{{ odpowiedz.id }}">
+        <button name="foo" value="upvote">zaglosuj na</button>
+    </form>
+      {% endfor %}
+</ul>
