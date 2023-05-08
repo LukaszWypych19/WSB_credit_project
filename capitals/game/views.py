@@ -38,7 +38,6 @@ def pokaz_pierwsze_pyt_i_odp(request):
     return HttpResponse(ladna_odpowiedz_do_przegladarki)
 
 
-
 def pyt_i_odp(request, question_id):
     try:
         pytanie: Questions = Questions.objects.get(pk=question_id)
