@@ -2,6 +2,7 @@ from django.urls import path
 
 from . import views, controller
 
+# app_name = 'game'
 urlpatterns = [
     path("", views.index, name="index"),
     path("<int:question_id>/", views.pytanie, name="detail"),

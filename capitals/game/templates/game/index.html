@@ -1,7 +1,10 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
-Lista pytan:
+<b>
+<span style="color: white"><span style="font-size: x-large">Wybierz rodzaj pytania:</span>
+</b>
+
 <ul>
     {% for pytanie in pytania %}
         <li><a href="{% url 'pyt_i_odp_template2' pytanie.id %}">{{ pytanie.question_text }} </a> </li>

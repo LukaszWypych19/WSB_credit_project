@@ -1,16 +1,15 @@
-from django.http import HttpResponse
 from .models import Choice, Questions
 from django.template import loader
-from django.shortcuts import render
-
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from django.urls import reverse
-
 from .controller import glosowanie
 
 
 def index(request):
+    # lista_pytan = Questions.objects.order_by('-pub_date')[:5]
+    # context = {"lista_pytan": lista_pytan}
+    # return render(request, "game/index.html", context)
     return render(request, 'game/index.html', {
         'pytania': Questions.objects.order_by('-pub_date')[:5]
     })
