@@ -12,7 +12,7 @@ ktora_baza = int(input('Podaj nr bazy: '))
 if ktora_baza == 1:
 
 # lokalna baza danych
-    with mysql.connector.connect(user='root', password='admin', host='localhost', database='filip') as connection:
+    with mysql.connector.connect(user='root', password='admin', host='localhost', database='quiz') as connection:
         cursor = connection.cursor()
 
 # czytamy plik csv za pomoca metody dictreader
@@ -26,13 +26,14 @@ if ktora_baza == 1:
                 # wybieramy z tabeli tylko te wiersze w ktorych sa stolice czyli w kolumnie capital wpisane jest primary
                 # tworzymy listy zawierajace panstwo,miasto i czy jest stolica z kazdego wiersza
                 if row['capital'] == 'primary':
-                    list_of_c_c = [row['country'], city_name, row['capital']]
+                    list_of_c_c = [city_name]
+                    # list_of_c_c = [row['country'], city_name, row['capital']]
                     # print(list_of_c_c)
 
-                    # local database - "filip"
+                    # local database - "quiz"
                     sql = f"""INSERT INTO
-                    countries_capitals(country, city, capital)
-                    VALUES('{list_of_c_c[0]}', '{city_name}', '{list_of_c_c[2]}');
+                    cities(cities)
+                    VALUES('{list_of_c_c[0]}')
                     """
                     cursor.execute(sql)
 
@@ -58,7 +59,7 @@ elif ktora_baza == 2:
                     list_of_c_c = [row['country'], city_name, row['capital']]
                     # print(list_of_c_c)
 
-                    # local database - "filip"
+                    # local database - "quiz"
                     sql = f"""INSERT INTO
                     countries_capitals(country, city, capital)
                     VALUES('{list_of_c_c[0]}', '{city_name}', '{list_of_c_c[2]}');
