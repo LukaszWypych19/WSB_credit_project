@@ -4,23 +4,50 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from .controller import glosowanie
+import random
 
 
 def index(request):
-    return render(request, 'game/index.html')
+    return render(request, 'game/index.html', {})
 
 
-def city(request):
-    cit = Cities.objects.all()
-    return HttpResponse(cit)
+# def country(request):
+#     cou = Countries.objects.all()
+#     return HttpResponse(cou)
+
 
 
 def country(request):
-    cou = Countries.objects.all()
-    return HttpResponse(cou)
+    template = loader.get_template("game/countries_pyt.html")
+    # country_list = Countries.objects.get(pk=1)
+    city_list1 = Cities.objects.order_by('?').first()
+    city_list2 = Cities.objects.order_by('?').first()
+    city_list3 = Cities.objects.order_by('?').first()
+    context = {
+        # 'country_list': country_list,
+        'city_list1': city_list1,
+        'city_list2': city_list2,
+        'city_list3': city_list3,
+    }
+    return HttpResponse(template.render(context, request))
 
 
-def city_and_country(request):
+def city(request):
+    template = loader.get_template("game/cities_pyt.html")
+    # country_list = Countries.objects.get(pk=1)
+    country_list1 = Countries.objects.order_by('?').first()
+    country_list2 = Countries.objects.order_by('?').first()
+    country_list3 = Countries.objects.order_by('?').first()
+    context = {
+        # 'country_list': country_list,
+        'country_list1': country_list1,
+        'country_list2': country_list2,
+        'country_list3': country_list3,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def country_and_city(request):
     cc = Cc.objects.all()
     return HttpResponse(cc)
 
@@ -71,7 +98,7 @@ def city_and_country(request):
 
 
 # def pyt_i_odp_template(request, question_id):
-#     template = loader.get_template("game/pyt_i_odp.html")
+#     template = loader.get_template("game/countries_pyt.html")
 #     pytanie = Questions.objects.get(pk=question_id)
 #     context = {
 #         'pytanie': pytanie,
@@ -82,7 +109,7 @@ def city_and_country(request):
 
 # def pyt_i_odp_template2(request, question_id):
 #     try:
-#         return render(request, "game/pyt_i_odp2.html", {
+#         return render(request, "game/cities_pyt.html", {
 #             'pytanie': Questions.objects.get(pk=question_id),
 #         })
 #     except Questions.DoesNotExist:

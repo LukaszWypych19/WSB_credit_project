@@ -2,12 +2,12 @@ from django.urls import path
 
 from . import views, controller
 
-# app_name = 'game'
+app_name = 'game'
 urlpatterns = [
     path("", views.index, name="index"),
-    path("city", views.city, name="city"),
     path("country", views.country, name="country"),
-    path("city_and_country", views.city_and_country, name="city_and_country"),
+    path("city", views.city, name="city"),
+    path("country_and_city", views.country_and_city, name="country_and_city"),
     # path("<int:question_id>/", views.pytanie, name="detail"),
     # path("game/<int:question_id>", views.pyt_i_odp, name="game"),
     # path("pyt_i_odp_template/<int:question_id>", views.pyt_i_odp_template, name="pyt_i_odp_template"),

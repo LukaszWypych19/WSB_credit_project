@@ -2,12 +2,26 @@
 
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
 <b>
-<span style="color: white"><span style="font-size: x-large">Wybierz rodzaj pytania:</span>
+    <span style="color: white">
+        <span style="font-size: xx-large">
+            Wybierz rodzaj pytania:
+        </span>
+    </span>
 </b>
 
-<ul>
-    {% for pytanie in pytania %}
-        <li><a href="{% url 'Pytanie' %}">{{ 'Pytanie' }} </a> </li>
-    {% endfor %}
+<ul type="square">
+    <span style="color: white">
+        <span style="font-size:x-large">
+            <li><a href="country">Jak nazywa się kraj którego stolicą jest...?</a></li>
+            <li><a href="city">Jak nazywa się stolica...?</a></li>
+        </span>
+    </span>
 </ul>
+
+
+
+<!--    {% for pytanie in pytania %}-->
+<!--        <li><a href="{% url 'Pytanie' %}">{{ 'Pytanie' }} </a> </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
 

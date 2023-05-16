@@ -21,18 +21,15 @@ from django.utils import timezone
 
 
 
-
-class Cc(models.Model):
-    country = models.CharField(max_length=45)
-    city = models.CharField(max_length=45)
+class Countries(models.Model):
+    countries = models.CharField(max_length=45)
 
     def __str__(self):
-        return f'{self.country} - {self.city}, '
+        return f'{self.countries}'
 
     class Meta:
         managed = True
-        db_table = 'cc'
-
+        db_table = 'countries'
 
 
 class Cities(models.Model):
@@ -46,12 +43,13 @@ class Cities(models.Model):
         db_table = 'cities'
 
 
-class Countries(models.Model):
-    countries = models.CharField(max_length=45)
+class Cc(models.Model):
+    country = models.CharField(max_length=45)
+    city = models.CharField(max_length=45)
 
     def __str__(self):
-        return f'{self.countries}, '
+        return f'{self.country} - {self.city}, '
 
     class Meta:
         managed = True
-        db_table = 'countries'
+        db_table = 'cc'
