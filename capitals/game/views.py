@@ -47,9 +47,22 @@ def city(request):
     return HttpResponse(template.render(context, request))
 
 
+
+
+
 def country_and_city(request):
-    cc = Cc.objects.all()
-    return HttpResponse(cc)
+    template = loader.get_template("game/cc.html")
+    country_list1 = Countries.objects.order_by('?').first()
+    city_list1 = Cities.objects.order_by('?').first()
+    context = {
+        'country_list1': country_list1,
+        'city_list1': city_list1,
+    }
+    return HttpResponse(template.render(context, request))
+
+# def country_and_city(request):
+#     cc = Cc.objects.all()
+#     return HttpResponse(cc)
 
 
 # def pokaz_pierwsze_pyt(request):

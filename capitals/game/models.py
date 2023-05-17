@@ -36,7 +36,7 @@ class Cities(models.Model):
     cities = models.CharField(max_length=45)
 
     def __str__(self):
-        return f'{self.cities}, '
+        return f'{self.cities}'
 
     class Meta:
         managed = True
