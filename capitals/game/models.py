@@ -48,7 +48,7 @@ class Cc(models.Model):
     city = models.CharField(max_length=45)
 
     def __str__(self):
-        return f'{self.country} - {self.city}, '
+        return f'{self.country} - {self.city}'
 
     class Meta:
         managed = True

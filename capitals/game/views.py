@@ -16,49 +16,39 @@ def index(request):
 #     return HttpResponse(cou)
 
 
-
 def country(request):
-    template = loader.get_template("game/countries_pyt.html")
-    # country_list = Countries.objects.get(pk=1)
     city_list1 = Cities.objects.order_by('?').first()
     city_list2 = Cities.objects.order_by('?').first()
     city_list3 = Cities.objects.order_by('?').first()
-    context = {
-        # 'country_list': country_list,
+
+    return render(request, "game/countries_pyt.html", {
         'city_list1': city_list1,
         'city_list2': city_list2,
         'city_list3': city_list3,
-    }
-    return HttpResponse(template.render(context, request))
+    })
 
 
 def city(request):
-    template = loader.get_template("game/cities_pyt.html")
-    # country_list = Countries.objects.get(pk=1)
     country_list1 = Countries.objects.order_by('?').first()
     country_list2 = Countries.objects.order_by('?').first()
     country_list3 = Countries.objects.order_by('?').first()
-    context = {
-        # 'country_list': country_list,
+    return render(request, "game/cities_pyt.html", {
         'country_list1': country_list1,
         'country_list2': country_list2,
         'country_list3': country_list3,
-    }
-    return HttpResponse(template.render(context, request))
-
-
-
+    })
 
 
 def country_and_city(request):
-    template = loader.get_template("game/cc.html")
-    country_list1 = Countries.objects.order_by('?').first()
-    city_list1 = Cities.objects.order_by('?').first()
-    context = {
-        'country_list1': country_list1,
+    # city_list1 = Cc.objects.filter().only('city').order_by('?').first()
+    city_list1 = Cc.objects.values_list('city').order_by('?').first()
+    city_list1_odp = Cc.objects.values_list('city', 'country').order_by('?').first()
+
+    return render(request, "game/cc.html", {
         'city_list1': city_list1,
-    }
-    return HttpResponse(template.render(context, request))
+        'city_list1_odp': city_list1_odp,
+    })
+
 
 # def country_and_city(request):
 #     cc = Cc.objects.all()
