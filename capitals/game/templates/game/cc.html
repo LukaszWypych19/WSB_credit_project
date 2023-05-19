@@ -4,7 +4,7 @@
 
 <span style="color: white">
     <span style="font-size:x-large">
-        <a href="country">Jak nazywa się kraj którego stolicą jest...?</a>
+        <a>Jak nazywa się kraj którego stolicą jest {{city}} ?</a>
     </span>
 </span>
 
@@ -12,8 +12,9 @@
 <ul type="square">
     <span style="color: white">
         <span style="font-size:x-large">
-    <li>{{ city_list1 }}</li>
-    <li>{{ city_list1_odp }}</li>
+    {% for i in list %}
+    <li>{{ i }}</li>
+    {% endfor %}
         </span>
     </span>
 </ul>

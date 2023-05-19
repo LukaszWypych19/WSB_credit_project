@@ -20,7 +20,6 @@ from django.utils import timezone
 #         return f'Odpowiedź: {self.choice_text} z {self.votes} glosami'
 
 
-
 class Countries(models.Model):
     countries = models.CharField(max_length=45)
 
@@ -33,6 +32,8 @@ class Countries(models.Model):
 
 
 class Cities(models.Model):
+    # countries = models.ForeignKey(Countries, on_delete=models.CASCADE, null=True, default=1)
+    # countries_FK = models.OneToOneField(Countries, on_delete=models.CASCADE, default=1)
     cities = models.CharField(max_length=45)
 
     def __str__(self):

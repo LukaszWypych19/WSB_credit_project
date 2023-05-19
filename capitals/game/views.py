@@ -40,14 +40,27 @@ def city(request):
 
 
 def country_and_city(request):
-    # city_list1 = Cc.objects.filter().only('city').order_by('?').first()
-    city_list1 = Cc.objects.values_list('city').order_by('?').first()
-    city_list1_odp = Cc.objects.values_list('city', 'country').order_by('?').first()
+    query = Cc.objects.values_list('country', 'city').order_by('?').first()
+
+    city = query[1]
+
+    odp_a = query[0]
+    odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+    odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+
+    list = [odp_a, odp_b, odp_c]
+    random.shuffle(list)
+
 
     return render(request, "game/cc.html", {
-        'city_list1': city_list1,
-        'city_list1_odp': city_list1_odp,
+        'city': city,
+        'odp_a': odp_a,
+        'odp_b': odp_b,
+        'odp_c': odp_c,
+        'list': list,
     })
+
+
 
 
 # def country_and_city(request):
