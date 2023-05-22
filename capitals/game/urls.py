@@ -8,6 +8,7 @@ urlpatterns = [
     path("country", views.country, name="country"),
     path("city", views.city, name="city"),
     path("cc", views.country_and_city, name="cc"),
+    path("cc/cc_odp", views.cc_odp, name="cc_odp"),
     # path("<int:question_id>/", views.pytanie, name="detail"),
     # path("game/<int:question_id>", views.pyt_i_odp, name="game"),
     # path("pyt_i_odp_template/<int:question_id>", views.pyt_i_odp_template, name="pyt_i_odp_template"),
@@ -21,4 +22,4 @@ urlpatterns = [
     # path("ankieta/<int:question_id>", views.ankieta, name='ankieta'),
     # path("glosowanie/<int:wybor_id>", controller.glosowanie, name='glosowanie'),
 
-]
+    ]
