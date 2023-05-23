@@ -9,20 +9,16 @@
 
 <ul type="square">
     <span style="color: white">
-        <span style="font-size:x-large">
+    <span style="font-size:x-large">
 
-   {% for i in list %}
-    <li>{{ i }}</li>
-   {% endfor %}
+    {% for i in lista_odp %}
+        <li>{{ i }}</li>
+    {% endfor %}
+    </span>
+    </span>
+</ul>
 <br>
 
 <button type="button">
-    <a href=cc/cc_odp>Pokaż odpowiedź</a>
+<a href="{% url 'game:cc_odp' %}">Pokaż odpowiedź</a>
 </button>
-
-
-        </span>
-    </span>
-</ul>
-
-
