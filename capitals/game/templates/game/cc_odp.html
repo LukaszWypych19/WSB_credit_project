@@ -14,4 +14,18 @@
 
         </span>
     </span>
+</ul><br>
+
+<ul>
+<!--<button type="button">-->
+<!--<a href="{{ request.META.HTTP_REFERER }}">Kolejne pytanie</a>-->
+<!--</button>-->
+<button style="margin-bottom:100px;" type="button">
+<a href="{% url 'game:cc' %}">Kolejne pytanie</a>
+</button>
+</ul>
+<ul>
+<button type="button">
+<a href="{% url 'game:index' %}">Wybierz rodzaj pytania</a>
+</button>
 </ul>
