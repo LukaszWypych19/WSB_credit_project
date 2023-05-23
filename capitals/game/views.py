@@ -51,7 +51,7 @@ def country_and_city(request):
     lista_odp = [odp_a, odp_b, odp_c]
     random.shuffle(lista_odp)
 
-    return city, render(request, "game/cc.html", {
+    return render(request, "game/cc.html", {
         'city': city,
         'lista_odp': lista_odp,
     })
