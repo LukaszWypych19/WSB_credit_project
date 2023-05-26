@@ -38,6 +38,16 @@ def city(request):
         'country_list3': country_list3,
     })
 
+# stworzenie połączenia pomiedzy dwoma istniejacymi modelami (tabelami)
+# w ktorych istnieja juz dane
+def relation_creation():
+    for ci in Cities.objects.all():
+        ci.countries_id = ci.id
+        ci.save()
+
+
+
+
 
 def country_and_city(request):
     query = Cc.objects.values_list('country', 'city').order_by('?').first()

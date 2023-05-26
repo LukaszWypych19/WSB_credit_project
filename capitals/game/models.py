@@ -32,8 +32,8 @@ class Countries(models.Model):
 
 
 class Cities(models.Model):
-    # countries = models.ForeignKey(Countries, on_delete=models.CASCADE, null=True, default=1)
-    # countries_FK = models.OneToOneField(Countries, on_delete=models.CASCADE, default=1)
+    # countries = models.ForeignKey(Countries, on_delete=models.CASCADE)
+    countries = models.OneToOneField(Countries, on_delete=models.CASCADE, null=True)
     cities = models.CharField(max_length=45)
 
     def __str__(self):
