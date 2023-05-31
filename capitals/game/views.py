@@ -11,39 +11,57 @@ def index(request):
     return render(request, 'game/index.html', {})
 
 
-# def country(request):
-#     cou = Countries.objects.all()
-#     return HttpResponse(cou)
+def country_pyt(request):
+    odp_a = Countries.objects.order_by('?').first()
+    odp_a_city = odp_a.cities
+    odp_b = Countries.objects.order_by('?').first()
+    odp_c = Countries.objects.order_by('?').first()
+
+    lista_odp = [odp_a, odp_b, odp_c]
+    random.shuffle(lista_odp)
+
+    return render(request, "game/countries_pyt.html", {
+        'odp_a_city': odp_a_city,
+        'lista_odp': lista_odp,
+    })
+
+def country_odp(request):
+    odp_a = Countries.objects.order_by('?').first()
+    odp_a_city = odp_a.cities
+    odp_b = Countries.objects.order_by('?').first()
+    odp_c = Countries.objects.order_by('?').first()
+
+    lista_odp = [odp_a, odp_b, odp_c]
+    random.shuffle(lista_odp)
+
+    return render(request, "game/countries_pyt.html", {
+        'odp_a_city': odp_a_city,
+        'lista_odp': lista_odp,
+    })
 
 
-def country(request):
+def city_pyt(request):
     city_list1 = Cities.objects.order_by('?').first()
     city_list2 = Cities.objects.order_by('?').first()
     city_list3 = Cities.objects.order_by('?').first()
 
-    return render(request, "game/countries_pyt.html", {
+    return render(request, "game/cities_pyt.html", {
         'city_list1': city_list1,
         'city_list2': city_list2,
         'city_list3': city_list3,
     })
 
+def city_odp(request):
+    city_list1 = Cities.objects.order_by('?').first()
+    city_list2 = Cities.objects.order_by('?').first()
+    city_list3 = Cities.objects.order_by('?').first()
 
-def city(request):
-    country_list1 = Countries.objects.order_by('?').first()
-    country_list2 = Countries.objects.order_by('?').first()
-    country_list3 = Countries.objects.order_by('?').first()
     return render(request, "game/cities_pyt.html", {
-        'country_list1': country_list1,
-        'country_list2': country_list2,
-        'country_list3': country_list3,
+        'city_list1': city_list1,
+        'city_list2': city_list2,
+        'city_list3': city_list3,
     })
 
-# stworzenie połączenia pomiedzy dwoma istniejacymi modelami (tabelami)
-# w ktorych istnieja juz dane
-def relation_creation():
-    for ci in Cities.objects.all():
-        ci.countries_id = ci.id
-        ci.save()
 
 
 
@@ -52,8 +70,8 @@ def relation_creation():
 def country_and_city(request):
     query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
-    global city, odp_a
-    city = query[1]
+    global city_pyt, odp_a
+    city_pyt = query[1]
     odp_a = query[0]
     odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
     odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
@@ -62,16 +80,35 @@ def country_and_city(request):
     random.shuffle(lista_odp)
 
     return render(request, "game/cc.html", {
-        'city': city,
+        'city': city_pyt,
         'lista_odp': lista_odp,
     })
 
 
 def cc_odp(request):
     return render(request, "game/cc_odp.html", {
-        'city': city,
+        'city': city_pyt,
         'odp_a': odp_a,
     })
+
+
+
+# Powiązanie dwoch tabel Cities i Countries - zrobione w shellu
+
+# for ci in Cities:
+#     city = Cities.objects.create(nazwa=f"City {ci}")
+#     country = Countries.objects.create(nazwa=f"Country {ci}")
+#     city.country = country
+#     city.save()
+
+
+# stworzenie połączenia pomiedzy dwoma istniejacymi modelami (tabelami)
+# w ktorych sa juz wprowadzone dane
+# def relation_creation():
+#     for ci in Cities.objects.all():
+#         ci.countries_id = ci.id
+#         ci.save()
+
 
 # def country_and_city(request):
 #     cc = Cc.objects.all()

@@ -3,25 +3,29 @@
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
 <span style="color: white">
     <span style="font-size:x-large">
-        <a>Jak nazywa się kraj którego stolicą jest {{ odp_a_city }} ?</a>
+        <a>{{ odp_a_city }} jest stolicą {{ odp_a }}.</a>
+
     </span>
 </span>
-
 
 <ul type="square">
     <span style="color: white">
         <span style="font-size:x-large">
 
-    {% for i in lista_odp %}
-        <li>{{ i }}</li>
-    {% endfor %}
-
         </span>
     </span>
-</ul>
-<br>
+</ul><br>
+
 <ul>
+<!--<button type="button">-->
+<!--<a href="{{ request.META.HTTP_REFERER }}">Kolejne pytanie</a>-->
+<!--</button>-->
 <button style="margin-bottom:30px;" type="button">
-<a href="{% url 'game:country_odp' %}">Pokaż odpowiedź</a>
+<a href="{% url 'game:cc' %}">Kolejne pytanie</a>
+</button>
+</ul>
+<ul>
+<button type="button">
+<a href="{% url 'game:index' %}">Wybierz rodzaj pytania</a>
 </button>
 </ul>
