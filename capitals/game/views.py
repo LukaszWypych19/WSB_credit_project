@@ -101,7 +101,6 @@ def cc_odp(request):
 #     city.country = country
 #     city.save()
 
-
 # stworzenie połączenia pomiedzy dwoma istniejacymi modelami (tabelami)
 # w ktorych sa juz wprowadzone dane
 # def relation_creation():

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "wsb-final-project"
+version = "0.1.0"
+description = "My final WSB project - the game"
+authors = ["Luk <lukasz.wypych19@gmail.com>"]
+readme = "README.md"
+packages = [{include = "wsb_final_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
