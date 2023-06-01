@@ -1,10 +1,9 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
-
 <span style="color: white">
     <span style="font-size:x-large">
-        <a href="city">Jak nazywa się stolica?</a>
+        <a>Jak nazywa się stolica {{ pyt_a_country }}?</a>
     </span>
 </span>
 
@@ -12,9 +11,23 @@
 <ul type="square">
     <span style="color: white">
         <span style="font-size:x-large">
-    <li>{{ country_list1 }}</li>
-    <li>{{ country_list2 }}</li>
-    <li>{{ country_list3 }}</li>
+
+    {% for city in lista_odp %}
+        <li>{{ city }}</li>
+    {% endfor %}
+
         </span>
     </span>
+</ul>
+<br>
+<ul>
+<button style="margin-bottom:30px;" type="button">
+<a href="{% url 'game:city_odp' %}">Pokaż odpowiedź</a>
+</button>
+</ul>
+
+<ul>
+<button type="button">
+<a href="{% url 'game:index' %}">Wybierz rodzaj pytania</a>
+</button>
 </ul>

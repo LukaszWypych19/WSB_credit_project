@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
 <span style="color: white">
     <span style="font-size:x-large">
-        <a>{{ city }} jest stolicą {{ odp_a }}.</a>
+        <a>{{ cc_city_pyt }} jest stolicą {{ cc_odp_a }}.</a>
 
     </span>
 </span>
@@ -17,11 +17,8 @@
 </ul><br>
 
 <ul>
-<!--<button type="button">-->
-<!--<a href="{{ request.META.HTTP_REFERER }}">Kolejne pytanie</a>-->
-<!--</button>-->
 <button style="margin-bottom:30px;" type="button">
-<a href="{% url 'game:cc' %}">Kolejne pytanie</a>
+<a href="{% url 'game:cc_pyt' %}">Kolejne pytanie</a>
 </button>
 </ul>
 <ul>

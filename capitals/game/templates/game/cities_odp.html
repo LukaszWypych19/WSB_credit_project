@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
 
-</body>
-</html>
+<link rel="stylesheet" href="{% static 'game/style.css' %}">
+<span style="color: white">
+    <span style="font-size:x-large">
+        <a>Stolicą {{ pyt_a_country }} jest {{ city_odp_a }}.</a>
+
+    </span>
+</span>
+
+<ul type="square">
+    <span style="color: white">
+        <span style="font-size:x-large">
+
+        </span>
+    </span>
+</ul><br>
+
+<ul>
+<button style="margin-bottom:30px;" type="button">
+<a href="{% url 'game:country_pyt' %}">Kolejne pytanie</a>
+</button>
+</ul>
+<ul>
+<button type="button">
+<a href="{% url 'game:index' %}">Wybierz rodzaj pytania</a>
+</button>
+</ul>
