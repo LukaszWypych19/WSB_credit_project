@@ -16,7 +16,7 @@ if ktora_baza == 1:
         cursor = connection.cursor()
 
 # czytamy plik csv za pomoca metody dictreader
-        with open('worldcities.csv', encoding='utf-8') as f:
+        with open('../worldcities.csv', encoding='utf-8') as f:
             reading = csv.DictReader(f)
 
             # w kolumnie city_ascii zamieniamy "'" na " "
@@ -45,7 +45,7 @@ elif ktora_baza == 2:
         cursor = connection.cursor()
 
         # czytamy plik csv za pomoca metody dictreader
-        with open('worldcities.csv', encoding='utf-8') as f:
+        with open('../worldcities.csv', encoding='utf-8') as f:
             reading = csv.DictReader(f)
 
             # w kolumnie city_ascii zamieniamy "'" na " "

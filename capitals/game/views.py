@@ -14,13 +14,14 @@ def index(request):
 def country_pyt(request):
     global pyt_a_city, count_odp_a
     count_odp_a = Countries.objects.order_by('?').first()
+
     pyt_a_city = count_odp_a.cities
     odp_b = Countries.objects.order_by('?').first()
     odp_c = Countries.objects.order_by('?').first()
     lista_odp = [count_odp_a, odp_b, odp_c]
     random.shuffle(lista_odp)
 
-    # request.session['odpowiedz'] = odp_a.cities
+    # request.session['odpowiedz'] = pyt_a_city
 
     return render(request, "game/countries_pyt.html", {
         'pyt_a_city': pyt_a_city,
@@ -28,6 +29,7 @@ def country_pyt(request):
     })
 
 def country_odp(request):
+    # odpowiedz = request.session.get('odpowiedz')
     return render(request, "game/countries_odp.html", {
         'pyt_a_city': pyt_a_city,
         'count_odp_a': count_odp_a,
@@ -44,7 +46,7 @@ def city_pyt(request):
     lista_odp = [city_odp_a, odp_b, odp_c]
     random.shuffle(lista_odp)
 
-    # request.session['odpowiedz'] = odp_a.cities
+    request.session['odpowiedz'] = count_odp_a.cities
 
     return render(request, "game/cities_pyt.html", {
         'pyt_a_country': pyt_a_country,
