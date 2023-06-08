@@ -11,6 +11,30 @@ def index(request):
     return render(request, 'game/index.html', {})
 
 
+def cc_pyt(request):
+    query = Cc.objects.values_list('country', 'city').order_by('?').first()
+
+    global cc_city_pyt, cc_odp_a
+    cc_city_pyt = query[1]
+    cc_odp_a = query[0]
+    odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+    odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+
+    lista_odp = [cc_odp_a, odp_b, odp_c]
+    random.shuffle(lista_odp)
+
+    return render(request, "game/cc_pyt.html", {
+        'cc_city_pyt': cc_city_pyt,
+        'lista_odp': lista_odp,
+    })
+
+
+def cc_odp(request):
+    return render(request, "game/cc_odp.html", {
+        'cc_city_pyt': cc_city_pyt,
+        'cc_odp_a': cc_odp_a,
+    })
+
 def country_pyt(request):
     global pyt_a_city, count_odp_a
     count_odp_a = Countries.objects.order_by('?').first()
@@ -60,29 +84,6 @@ def city_odp(request):
         # 'odpowiedz': odpowiedz,
     })
 
-def cc_pyt(request):
-    query = Cc.objects.values_list('country', 'city').order_by('?').first()
-
-    global cc_city_pyt, cc_odp_a
-    cc_city_pyt = query[1]
-    cc_odp_a = query[0]
-    odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
-    odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
-
-    lista_odp = [cc_odp_a, odp_b, odp_c]
-    random.shuffle(lista_odp)
-
-    return render(request, "game/cc_pyt.html", {
-        'cc_city_pyt': cc_city_pyt,
-        'lista_odp': lista_odp,
-    })
-
-
-def cc_odp(request):
-    return render(request, "game/cc_odp.html", {
-        'cc_city_pyt': cc_city_pyt,
-        'cc_odp_a': cc_odp_a,
-    })
 
 
 

@@ -4,10 +4,15 @@
 <b>
     <span style="color: white">
         <span style="font-size: xx-large">
+            Cześć {{ user.username }}!
+<!--            <p style="text-align: right"> <a href="{% url 'logout' %}">Log Out</a></p>-->
+            <p style="text-align: left"> <a href="{% url 'logout' %}">Log Out</a></p>
+            <br>
             Wybierz rodzaj pytania:
         </span>
     </span>
 </b>
+
 
 <ul type="square">
     <span style="color: white">
@@ -18,11 +23,3 @@
         </span>
     </span>
 </ul>
-
-
-
-<!--    {% for pytanie in pytania %}-->
-<!--        <li><a href="{% url 'Pytanie' %}">{{ 'Pytanie' }} </a> </li>-->
-<!--    {% endfor %}-->
-<!--</ul>-->
-

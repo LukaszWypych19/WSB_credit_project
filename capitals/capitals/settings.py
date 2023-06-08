@@ -131,6 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "http://127.0.0.1:8000/game/"
 
 LOGOUT_REDIRECT_URL = "home"
