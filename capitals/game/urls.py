@@ -5,12 +5,13 @@ from . import views, controller
 app_name = 'game'
 urlpatterns = [
     path("", views.index, name="index"),
-    path("cc", views.cc_pyt, name="cc_pyt"),
-    path("cc/cc_odp", views.cc_odp, name="cc_odp"),
+
     path("country_pyt", views.country_pyt, name="country_pyt"),
     path("country_odp", views.country_odp, name="country_odp"),
     path("city_pyt", views.city_pyt, name="city_pyt"),
     path("city_odp", views.city_odp, name="city_odp"),
+
+
     # path("<int:question_id>/", views.pytanie, name="detail"),
     # path("game/<int:question_id>", views.pyt_i_odp, name="game"),
     # path("pyt_i_odp_template/<int:question_id>", views.pyt_i_odp_template, name="pyt_i_odp_template"),

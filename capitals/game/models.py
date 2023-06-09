@@ -38,9 +38,29 @@ class Cc(models.Model):
         managed = True
         db_table = 'cc'
 
+
+class AuthUser(models.Model):
+    id = models.IntegerField(primary_key=True)
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.IntegerField()
+    username = models.CharField(unique=True, max_length=150)
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.IntegerField()
+    is_active = models.IntegerField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
+
+
 class History(models.Model):
-    question = models.CharField(max_length=200)
-    correct_ans = models.CharField(max_length=200)
+    id = models.IntegerField(primary_key=True)
+    question = models.CharField(max_length=100)
+    correct_ans = models.CharField(max_length=100)
     username_id = models.ForeignKey(AuthUser, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -48,7 +68,7 @@ class History(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'cc'
+        db_table = 'history'
 
 
 

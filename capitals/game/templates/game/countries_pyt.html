@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
 <span style="color: white">
     <span style="font-size:x-large">
-        <a>Jak nazywa się kraj którego stolicą jest {{ pyt_a_city }}?</a>
+        <a>Jak nazywa się kraj którego stolicą jest {{ city_for_country_pyt }}?</a>
     </span>
 </span>
 
@@ -12,7 +12,7 @@
     <span style="color: white">
         <span style="font-size:x-large">
 
-    {% for country in lista_odp %}
+    {% for country in lista_country_odp %}
         <li>{{ country }}</li>
     {% endfor %}
 
