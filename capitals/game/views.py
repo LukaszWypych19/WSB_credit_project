@@ -14,27 +14,30 @@ def index(request):
 def country_pyt(request):
     query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
-    global country_for_city_pyt, city_odp_a
-    country_for_city_pyt = query[1]
-    city_odp_a = query[0]    # prawidlowa odpowiedz
+    global city_for_country_pyt, country_odp_a
+    city_for_country_pyt = query[1]
+    country_odp_a = query[0]    # prawidlowa odpowiedz
     country_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
     country_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
 
-    lista_country_odp = [city_odp_a, country_odp_b, country_odp_c]
+    lista_country_odp = [country_odp_a, country_odp_b, country_odp_c]
     random.shuffle(lista_country_odp)
 
     return render(request, "game/countries_pyt.html", {
-        'city_for_country_pyt': country_for_city_pyt,
+        'city_for_country_pyt': city_for_country_pyt,
         'lista_country_odp': lista_country_odp,
     })
 
 def country_odp(request):
+    # if odp == country_odp_b or odp == country_odp_c:
+    #     return HttpResponseRedirect('game/zla_odp')
+    # else:
     # odpowiedz = request.session.get('odpowiedz')
-    return render(request, "game/countries_odp.html", {
-        'city_for_country_pyt': country_for_city_pyt,
-        'country_odp_a': city_odp_a,
-        # 'odpowiedz': odpowiedz,
-    })
+        return render(request, "game/countries_odp.html", {
+            'city_for_country_pyt': city_for_country_pyt,
+            'country_odp_a': country_odp_a,
+            # 'odpowiedz': odpowiedz,
+        })
 
 
 def city_pyt(request):
@@ -43,8 +46,8 @@ def city_pyt(request):
     global country_for_city_pyt, city_odp_a
     country_for_city_pyt = query[0]
     city_odp_a = query[1]    # prawidlowa odpowiedz
-    city_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
-    city_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+    city_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
+    city_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
 
     lista_city_odp = [city_odp_a, city_odp_b, city_odp_c]
     random.shuffle(lista_city_odp)
@@ -61,6 +64,11 @@ def city_odp(request):
         'city_odp_a': city_odp_a,
         # 'odpowiedz': odpowiedz,
     })
+
+
+def zla_odp(request):
+    return HttpResponse('To nie jest poprawna odpowiedź! Spróbuj ponownie!')
+
 
 
 

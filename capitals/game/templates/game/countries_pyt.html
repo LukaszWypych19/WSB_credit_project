@@ -13,7 +13,7 @@
         <span style="font-size:x-large">
 
     {% for country in lista_country_odp %}
-        <li>{{ country }}</li>
+        <li><a href="{% url 'game:country_odp' %}">{{ country }}</a></li>
     {% endfor %}
 
         </span>

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
 <span style="color: white">
     <span style="font-size:x-large">
-        <a>Stolicą {{ country_for_city_pyt }} jest {{ city_odp_a }}.</a>
+        <a>Stolicą {{ country_for_city_pyt }} jest {{ city_odp_a }}</a>
 
     </span>
 </span>
@@ -18,7 +18,7 @@
 
 <ul>
 <button style="margin-bottom:30px;" type="button">
-<a href="{% url 'game:country_pyt' %}">Kolejne pytanie</a>
+<a href="{% url 'game:city_pyt' %}">Kolejne pytanie</a>
 </button>
 </ul>
 <ul>
