@@ -1,10 +1,11 @@
 from .models import Countries, Cities, Cc, History, AuthUser
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .controller import glosowanie
 import random
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -14,11 +15,13 @@ def index(request):
 def country_pyt(request):
     query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
-    global city_for_country_pyt, country_odp_a
+    global city_for_country_pyt, country_odp_a, user_id
     city_for_country_pyt = query[1]
     country_odp_a = query[0]    # prawidlowa odpowiedz
     country_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
     country_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+
+    user_id = request.user.id
 
     lista_country_odp = [country_odp_a, country_odp_b, country_odp_c]
     random.shuffle(lista_country_odp)
@@ -26,6 +29,7 @@ def country_pyt(request):
     return render(request, "game/countries_pyt.html", {
         'city_for_country_pyt': city_for_country_pyt,
         'lista_country_odp': lista_country_odp,
+        'user_id': user_id,
     })
 
 def country_odp(request):
@@ -36,7 +40,7 @@ def country_odp(request):
         return render(request, "game/countries_odp.html", {
             'city_for_country_pyt': city_for_country_pyt,
             'country_odp_a': country_odp_a,
-            # 'odpowiedz': odpowiedz,
+            'user_id': user_id,
         })
 
 
@@ -62,13 +66,47 @@ def city_odp(request):
     return render(request, "game/cities_odp.html", {
         'country_for_city_pyt': country_for_city_pyt,
         'city_odp_a': city_odp_a,
-        # 'odpowiedz': odpowiedz,
     })
+
+@login_required
+def save_history(request):
+    if request.method == 'POST':
+        question = request.POST.get('question')
+        correct_ans = request.POST.get('correct_ans')
+        # user_id = request.user.id
+
+        # username_id = request.POST.get('user_id')
+
+        # user = AuthUser.objects.get(pk=username_id)
+
+        history = History(question=question, correct_ans=correct_ans, username_id_id=user_id)
+        history.save()
+
+        return render(request, 'save_history.html', {
+            'question': question,
+            'correct_ans': correct_ans,
+            'user_id': user_id,
+        })
+
+
+#         return glosowanie(request, nr_odp)
+# return HttpResponse('zapisales odp')
 
 
 def zla_odp(request):
     return HttpResponse('To nie jest poprawna odpowiedź! Spróbuj ponownie!')
 
+
+# def ankieta(request, question_id):
+#     if request.method == "POST":
+#         nr_odp = request.POST.get("nr_odp")
+#         return glosowanie(request, nr_odp)
+#     try:
+#         return render(request, "game/ankieta.html", {
+#             'pytanie': Questions.objects.get(pk=question_id),
+#         })
+#     except Questions.DoesNotExist:
+#         return HttpResponse('Nie ma takiego pytania')
 
 
 

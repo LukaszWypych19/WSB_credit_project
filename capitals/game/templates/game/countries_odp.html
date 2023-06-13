@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
 <span style="color: white">
     <span style="font-size:x-large">
-        <a>{{ city_for_country_pyt }} jest stolicą {{ country_odp_a }}.</a>
+        <a>{{ city_for_country_pyt }} jest stolicą {{ country_odp_a }}</a>
 
     </span>
 </span>
@@ -15,6 +15,25 @@
         </span>
     </span>
 </ul><br>
+
+<form method="post" action="{% url 'game:save_history' %}">
+    {% csrf_token %}
+    <input type="text" name="question" id="question" value="{{ country_odp_a }}">
+    <input type="text" name="correct_ans" id="correct_ans" value="{{ city_for_country_pyt }}">
+    <input type="text" name="user_id" id="user_id" value="{{ user_id }}">
+    <button name="foo" value="save">zapisz odpowiedź</button>
+</form>
+
+
+<!--<form method="post" action="{% url 'game:save_history' %}">-->
+<!--    {% csrf_token %}-->
+<!--    <input type="hidden" name="question" value="{{ question }}">-->
+<!--    <input type="hidden" name="correct_ans" value="{{ correct_ans }}">-->
+<!--    <input type="hidden" name="username_id" value="{{ username_id }}">-->
+<!--    <button name="foo" value="save">zapisz odpowiedź</button>-->
+<!--</form>-->
+
+
 
 <ul>
 <button style="margin-bottom:30px;" type="button">
