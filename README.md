@@ -1,13 +1,14 @@
-#  Aplikacja auiz - "Capitals"
+#  Aplikacja quiz - "Capitals"
 Quiz polegający na dopasowaniu kraju do stolicy i stolicy do kraju.
 
 ## Cel projektu
-Quiz daje możliwość sprawdzenia swojej wiedzy zarówno nt nazwy danego państwa jak i nazwy jego stolicy.
-Aby rozpocząć quiz należy założyć konto lub sie zalogować. Na stronie powitalnej, po kliknięciu
- w link z danym rodzajem pytania, przechodzimy na stronę z konkretnym pytaniem oraz trzema odpowiedziami.
- Widoczne są również dwa przyciski: „Pokaż odpowiedź” który przenosi nas do strony z poprawną odpowiedzią
- oraz „Wybierz rodzaj pytania” który przenosi nas do strony wyboru rodzaju pytania.
- Odświeżenie strony z pytaniem powoduje wylosowanie kolejnego kraju (stolicy) oraz zestawu odpowiedzi.
+Quiz daje możliwość sprawdzenia swojej wiedzy zarówno nt. nazwy danego państwa jak i nazwy jego stolicy. 
+Po kliknięciu w link z danym rodzajem pytania, przechodzimy na stronę z konkretnym pytaniem oraz trzema 
+odpowiedziami. Widoczne są również dwa przyciski: „Pokaż odpowiedź” który przenosi nas do strony z poprawną
+odpowiedzią i możliwością zapisania udzielonej odpowiedzi (przycisk „zapisz odpowiedź – zapisuje odpowiedź
+i przenosi nas na stronę z historycznymi odpowiedziami danego użytkownika) oraz „Wybierz rodzaj pytania” 
+który przenosi nas do strony wyboru rodzaju pytania. Odświeżenie strony z pytaniem powoduje wylosowanie 
+kolejnego kraju (lub stolicy) oraz zestawu odpowiedzi. 
 
 ## Użyte technologie
 - Python (wersja 3.11)
