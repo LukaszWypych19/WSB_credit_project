@@ -5,10 +5,17 @@
     <span style="font-size:x-large">
         <a>Pytanie i odpowiedź zostały zapisane</a><br>
 
+        <br><a>Historia ostatnich 10 pytań i odpowiedzi</a>
 
-        <br><a>Historia pytań i odpowiedzi</a>
-
-
+<ul type="square">
+    <span style="color: white">
+        <span style="font-size:large">
+            {% for item in last_five_items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </span>
+    </span>
+</ul><br>
 
     </span>
 </span>
@@ -16,11 +23,9 @@
 <ul type="square">
     <span style="color: white">
         <span style="font-size:x-large">
-
         </span>
     </span>
-</ul><br>
-
+</ul>
 
 <ul>
 <button style="margin-bottom:30px;" type="button">

@@ -53,7 +53,8 @@ class AuthUser(models.Model):
     date_joined = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.id} - {self.username}'
+        return f'{self.username}'
+        # return f'{self.id} - {self.username}'
 
     class Meta:
         managed = False
@@ -68,7 +69,7 @@ class History(models.Model):
     username_id = models.ForeignKey(AuthUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Twoja ostatnia poprawna odpowiedz to {self.question} - {self.correct_ans} - {self.username_id}'
+        return f'{self.question} - {self.correct_ans} - {self.username_id}'
 
     class Meta:
         managed = True

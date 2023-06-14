@@ -68,29 +68,44 @@ def city_odp(request):
         'city_odp_a': city_odp_a,
     })
 
+
 @login_required
 def save_history(request):
     if request.method == 'POST':
         question = request.POST.get('question')
         correct_ans = request.POST.get('correct_ans')
-        # user_id = request.user.id
 
+        user_id = request.user.id
         # username_id = request.POST.get('user_id')
-
         # user = AuthUser.objects.get(pk=username_id)
 
         history = History(question=question, correct_ans=correct_ans, username_id_id=user_id)
         history.save()
 
+        last_five_items = History.objects.order_by('-id')[:10]
+        # last_five_items = five_items(request.user)
+
         return render(request, 'save_history.html', {
             'question': question,
             'correct_ans': correct_ans,
             'user_id': user_id,
+            'last_five_items': last_five_items,
         })
 
 
-#         return glosowanie(request, nr_odp)
-# return HttpResponse('zapisales odp')
+
+
+# def get_last_five_history_items(request, user):
+#     last_five_items = History.objects.filter(username_id_id=user).order_by('-timestamp')[:5]
+#     return render(request, 'save_history.html', {
+#         # 'question': question,
+#         # 'correct_ans': correct_ans,
+#         # 'user_id': user_id,
+#         # 'last_hist': last_hist,
+#         'last_five_items': last_five_items,
+#     })
+
+    # return last_five_items
 
 
 def zla_odp(request):
