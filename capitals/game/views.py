@@ -80,20 +80,17 @@ def save_history(request):
         correct_ans = request.POST.get('correct_ans')
 
         user_id = request.user.id
-        # username_id = request.POST.get('user_id')
-        # user = AuthUser.objects.get(pk=username_id)
-
+        # zapisanie wynikow do bazy danych
         history = History(question=question, correct_ans=correct_ans, username_id_id=user_id)
         history.save()
-
-        last_five_items = History.objects.order_by('-id')[:10]
-        # last_five_items = five_items(request.user)
+        # wyswietlanie ostatnich (10) pytanie + odpowiedz + uzytkownik
+        last_items = History.objects.order_by('-id')[:10]
 
         return render(request, 'save_history.html', {
             'question': question,
             'correct_ans': correct_ans,
             'user_id': user_id,
-            'last_five_items': last_five_items,
+            'last_items': last_items,
         })
 
 

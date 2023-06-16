@@ -25,11 +25,15 @@
     <input type="hidden" name="question" id="question" value="{{ country_odp_a }}">
     <input type="hidden" name="correct_ans" id="correct_ans" value="{{ city_for_country_pyt }}">
     <input type="hidden" name="user_id" id="user_id" value="{{ user_id }}">
-    <button name="foo" value="save">Zapisz odpowiedź</button>
+    <button style="margin-bottom:30px; position: absolute; top: 140px; left: 48px"
+            name="foo"
+            value="save"><font
+            size="4">Zapisz odpowiedź</font></button>
 </form>
+<br>
 
 <ul>
-<button style="margin-bottom:30px;" type="button">
+<button style="margin-bottom:30px; margin-top:10px; " type="button">
     <a href="{% url 'game:country_pyt' %}"><font size="4">Kolejne pytanie</font></a>
 </button>
 </ul>
