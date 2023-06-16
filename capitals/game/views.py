@@ -13,12 +13,25 @@ def index(request):
 
 
 def country_pyt(request):
-    query = Cc.objects.values_list('country', 'city').order_by('?').first()
+
+    total_nr_of_id = Cc.objects.count()
+    random_id = random.randint(0, total_nr_of_id - 1)
+    query = Cc.objects.values_list('country', 'city')[random_id]
+    # alternatywna metoda losowania odp a
+    # query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
     city_for_country_pyt = query[1]
     country_odp_a = query[0]    # prawidlowa odpowiedz
-    country_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
-    country_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+
+    random_id = random.randint(0, total_nr_of_id - 1)
+    country_odp_b = Cc.objects.values_list('country', 'city')[random_id][0]
+    # alternatywna metoda losowania odp b
+    # country_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
+
+    random_id = random.randint(0, total_nr_of_id - 1)
+    country_odp_c = Cc.objects.values_list('country', 'city')[random_id][0]
+    # alternatywna metoda losowania odp c
+    # country_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
 
     user_id = request.user.id
 
@@ -46,12 +59,27 @@ def country_odp(request):
 
 
 def city_pyt(request):
-    query = Cc.objects.values_list('country', 'city').order_by('?').first()
+    total_no_of_id = Cc.objects.count()
+    random_id = random.randint(0, total_no_of_id - 1)
+    query = Cc.objects.values_list('country', 'city')[random_id]
+
+    # alternatywna metoda losowania odp a
+    # query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
     country_for_city_pyt = query[0]
     city_odp_a = query[1]    # prawidlowa odpowiedz
-    city_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
-    city_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
+
+
+    random_id = random.randint(0, total_no_of_id - 1)
+    city_odp_b = Cc.objects.values_list('country', 'city')[random_id][1]
+    # alternatywna metoda losowania odp b
+    # city_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
+
+
+    random_id = random.randint(0, total_no_of_id - 1)
+    city_odp_c = Cc.objects.values_list('country', 'city')[random_id][1]
+    # alternatywna metoda losowania odp c
+    # city_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
 
     user_id = request.user.id
 

@@ -13,10 +13,6 @@ def save_answers_history(request):
 
 
 
-
-
-
-
 def glosowanie(request, wybor_id):
     wybor = Countries.objects.get(pk=wybor_id)
     wybor.votes += 1
