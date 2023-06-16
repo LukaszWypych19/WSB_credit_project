@@ -26,9 +26,16 @@
 </ul>
 <br>
 <ul>
-    <button style="margin-bottom:30px;" type="button">
-        <a href="{% url 'game:country_odp' %}"><font size="4">Pokaż odpowiedź</font></a>
-</button>
+<br>
+    <form method="post" action="{% url 'game:country_odp' %}">
+    {% csrf_token %}
+    <input type="hidden" name="country_odp_a" id="question" value="{{ country_odp_a }}">
+    <input type="hidden" name="city_for_country_pyt" id="correct_ans" value="{{ city_for_country_pyt }}">
+    <input type="hidden" name="user_id" id="user_id" value="{{ user_id }}">
+    <button style="margin-bottom:30px; position: absolute; top: 250px; left: 48px"
+            name="foo"
+            value="save"><font size="4">Pokaż odpowiedź</font></button>
+</form>
 </ul>
 
 <ul>

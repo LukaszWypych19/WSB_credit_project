@@ -10,7 +10,7 @@ urlpatterns = [
     path("city_pyt", views.city_pyt, name="city_pyt"),
     path("city_odp", views.city_odp, name="city_odp"),
     path("save_history", views.save_history, name="save_history"),
-    path("zla_odp", views.zla_odp, name="zla_odp"),
+    # path("zla_odp", views.zla_odp, name="zla_odp"),
 
 
     # path("<int:question_id>/", views.pytanie, name="detail"),

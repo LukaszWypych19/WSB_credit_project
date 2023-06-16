@@ -15,7 +15,6 @@ def index(request):
 def country_pyt(request):
     query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
-    global city_for_country_pyt, country_odp_a, user_id
     city_for_country_pyt = query[1]
     country_odp_a = query[0]    # prawidlowa odpowiedz
     country_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[0]
@@ -30,24 +29,25 @@ def country_pyt(request):
         'city_for_country_pyt': city_for_country_pyt,
         'lista_country_odp': lista_country_odp,
         'user_id': user_id,
+        'country_odp_a': country_odp_a,
     })
 
 def country_odp(request):
-    # if odp == country_odp_b or odp == country_odp_c:
-    #     return HttpResponseRedirect('game/zla_odp')
-    # else:
-    # odpowiedz = request.session.get('odpowiedz')
-        return render(request, "game/countries_odp.html", {
-            'city_for_country_pyt': city_for_country_pyt,
-            'country_odp_a': country_odp_a,
-            'user_id': user_id,
-        })
+    if request.method == 'POST':
+        country_odp_a = request.POST.get('country_odp_a')
+        city_for_country_pyt = request.POST.get('city_for_country_pyt')
+        user_id = request.POST.get('user_id')
+
+    return render(request, "game/countries_odp.html", {
+        'city_for_country_pyt': city_for_country_pyt,
+        'country_odp_a': country_odp_a,
+        'user_id': user_id,
+    })
 
 
 def city_pyt(request):
     query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
-    global country_for_city_pyt, city_odp_a, user_id
     country_for_city_pyt = query[0]
     city_odp_a = query[1]    # prawidlowa odpowiedz
     city_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
@@ -62,10 +62,15 @@ def city_pyt(request):
         'country_for_city_pyt': country_for_city_pyt,
         'lista_city_odp': lista_city_odp,
         'user_id': user_id,
+        'city_odp_a': city_odp_a,
     })
 
 
 def city_odp(request):
+    if request.method == 'POST':
+        city_odp_a = request.POST.get('city_odp_a')
+        country_for_city_pyt = request.POST.get('country_for_city_pyt')
+        user_id = request.POST.get('user_id')
     return render(request, "game/cities_odp.html", {
         'country_for_city_pyt': country_for_city_pyt,
         'city_odp_a': city_odp_a,
@@ -109,8 +114,9 @@ def save_history(request):
     # return last_five_items
 
 
-def zla_odp(request):
-    return HttpResponse('To nie jest poprawna odpowiedź! Spróbuj ponownie!')
+# def zla_odp(request):
+#     return HttpResponse('To nie jest poprawna odpowiedź! Spróbuj ponownie!')
+
 
 
 # def ankieta(request, question_id):
@@ -123,8 +129,6 @@ def zla_odp(request):
 #         })
 #     except Questions.DoesNotExist:
 #         return HttpResponse('Nie ma takiego pytania')
-
-
 
 
 # Powiązanie dwoch tabel Cities i Countries - zrobione w shellu
@@ -144,85 +148,4 @@ def zla_odp(request):
 
 
 
-
-# def pokaz_pierwsze_pyt(request):
-#     q: Questions = Questions.objects.get(pk=1)
-#     return HttpResponse(q.question_text)
-#
-# def pokaz_drugie_pyt(request):
-#     q: Questions = Questions.objects.get(pk=2)
-#     return HttpResponse(q.question_text)
-#
-# def pytanie(request, question_id):
-#     q: Questions = Questions.objects.get(pk=question_id)
-#     return HttpResponse(q.question_text)
-
-# def pokaz_pierwsze_pyt_i_odp(request):
-#     pytanie: Questions = Questions.objects.get(pk=1)
-#     odpowiedzi_na_pytanie = pytanie.choice_set.all()
-#
-#     ladna_odpowiedz_do_przegladarki = f'Pytanie: {pytanie.question_text} <br/>'
-#     for odp in odpowiedzi_na_pytanie:
-#         ladna_odpowiedz_do_przegladarki += f' - {odp.choice_text} - liczba glosow: {odp.votes} <br/>'
-#
-#     return HttpResponse(ladna_odpowiedz_do_przegladarki)
-
-
-# def pyt_i_odp(request, question_id):
-#     try:
-#         pytanie: Questions = Questions.objects.get(pk=question_id)
-#     except Questions.DoesNotExist:
-#         return HttpResponse('Nie ma takiego pytania ')
-#     odpowiedzi_na_pytanie = pytanie.choice_set.all()
-#
-#     odpowiedzi_sformatowane = ''
-#     for odp in odpowiedzi_na_pytanie:
-#         odpowiedzi_sformatowane += f'<li> {odp.choice_text} - liczba glosow: {odp.votes} </li>'
-#
-#
-#     ladna_odpowiedz_do_przegladarki = f"""
-#     <b>Pytanie:</b> {pytanie.question_text}
-# <ul>
-#     {odpowiedzi_sformatowane}
-#  </ul>
-#
-#     """
-#     return HttpResponse(ladna_odpowiedz_do_przegladarki)
-
-
-# def pyt_i_odp_template(request, question_id):
-#     template = loader.get_template("game/countries_pyt.html")
-#     pytanie = Questions.objects.get(pk=question_id)
-#     context = {
-#         'pytanie': pytanie,
-#         'lista_odpowiedzi': pytanie.choice_set.all()
-#     }
-#     return HttpResponse(template.render(context, request))
-
-
-# def pyt_i_odp_template2(request, question_id):
-#     try:
-#         return render(request, "game/cities_pyt.html", {
-#             'pytanie': Questions.objects.get(pk=question_id),
-#         })
-#     except Questions.DoesNotExist:
-#         return HttpResponse('Nie ma takiego pytania')
-
-# def pokaz_pierwsze_pyt_innym_stylu(request):
-#     return HttpResponse("trzeba zaimplementowac pokaz pierwsze pytanie w innym stylu")
-
-# def oddano_glos(request):
-#     return HttpResponse('Wlasnie oddales glos')
-
-
-# def ankieta(request, question_id):
-#     if request.method == "POST":
-#         nr_odp = request.POST.get("nr_odp")
-#         return glosowanie(request, nr_odp)
-#     try:
-#         return render(request, "game/ankieta.html", {
-#             'pytanie': Questions.objects.get(pk=question_id),
-#         })
-#     except Questions.DoesNotExist:
-#         return HttpResponse('Nie ma takiego pytania')
 
