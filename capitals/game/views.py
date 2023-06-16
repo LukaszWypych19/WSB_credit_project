@@ -47,11 +47,13 @@ def country_odp(request):
 def city_pyt(request):
     query = Cc.objects.values_list('country', 'city').order_by('?').first()
 
-    global country_for_city_pyt, city_odp_a
+    global country_for_city_pyt, city_odp_a, user_id
     country_for_city_pyt = query[0]
     city_odp_a = query[1]    # prawidlowa odpowiedz
     city_odp_b = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
     city_odp_c = Cc.objects.values_list('country', 'city').order_by('?').first()[1]
+
+    user_id = request.user.id
 
     lista_city_odp = [city_odp_a, city_odp_b, city_odp_c]
     random.shuffle(lista_city_odp)
@@ -59,6 +61,7 @@ def city_pyt(request):
     return render(request, "game/cities_pyt.html", {
         'country_for_city_pyt': country_for_city_pyt,
         'lista_city_odp': lista_city_odp,
+        'user_id': user_id,
     })
 
 
@@ -66,6 +69,7 @@ def city_odp(request):
     return render(request, "game/cities_odp.html", {
         'country_for_city_pyt': country_for_city_pyt,
         'city_odp_a': city_odp_a,
+        'user_id': user_id,
     })
 
 

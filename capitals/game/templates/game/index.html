@@ -1,16 +1,19 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
-<b>
-    <span style="color: white">
-        <span style="font-size: xx-large">
-            Cześć {{ user.username }}!
-            <p style="text-align: left"> <a href="{% url 'logout' %}">Log Out</a></p>
-            <br>
-            Wybierz rodzaj pytania:
-        </span>
+<br>
+<button style="margin-bottom:30px;" type="button">
+<a href="{% url 'logout' %}"><font size="4">Log Out</font></a>
+</button>
+
+
+<span style="color: white">
+    <span style="font-size: xx-large">
+        <br><b>Cześć {{ user.username }}!</b></br>
+        <br>
+        Wybierz rodzaj pytania:
     </span>
-</b>
+</span>
 
 
 <ul type="square">

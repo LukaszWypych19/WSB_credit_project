@@ -1,47 +1,40 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'game/style.css' %}">
+<br>
+<button style="margin-bottom:30px;" type="button">
+<a href="{% url 'logout' %}"><font size="4">Log Out</font></a>
+</button><br>
+
+
 <span style="color: white">
     <span style="font-size:x-large">
         <a>{{ city_for_country_pyt }} jest stolicą {{ country_odp_a }}</a>
-
     </span>
 </span>
 
 <ul type="square">
     <span style="color: white">
         <span style="font-size:x-large">
-
         </span>
     </span>
 </ul><br>
 
 <form method="post" action="{% url 'game:save_history' %}">
     {% csrf_token %}
-    <input type="text" name="question" id="question" value="{{ country_odp_a }}">
-    <input type="text" name="correct_ans" id="correct_ans" value="{{ city_for_country_pyt }}">
-    <input type="text" name="user_id" id="user_id" value="{{ user_id }}">
-    <button name="foo" value="save">zapisz odpowiedź</button>
+    <input type="hidden" name="question" id="question" value="{{ country_odp_a }}">
+    <input type="hidden" name="correct_ans" id="correct_ans" value="{{ city_for_country_pyt }}">
+    <input type="hidden" name="user_id" id="user_id" value="{{ user_id }}">
+    <button name="foo" value="save">Zapisz odpowiedź</button>
 </form>
-
-
-<!--<form method="post" action="{% url 'game:save_history' %}">-->
-<!--    {% csrf_token %}-->
-<!--    <input type="hidden" name="question" value="{{ question }}">-->
-<!--    <input type="hidden" name="correct_ans" value="{{ correct_ans }}">-->
-<!--    <input type="hidden" name="username_id" value="{{ username_id }}">-->
-<!--    <button name="foo" value="save">zapisz odpowiedź</button>-->
-<!--</form>-->
-
-
 
 <ul>
 <button style="margin-bottom:30px;" type="button">
-<a href="{% url 'game:country_pyt' %}">Kolejne pytanie</a>
+    <a href="{% url 'game:country_pyt' %}"><font size="4">Kolejne pytanie</font></a>
 </button>
 </ul>
 <ul>
 <button type="button">
-<a href="{% url 'game:index' %}">Wybierz rodzaj pytania</a>
+    <a href="{% url 'game:index' %}"><font size="4">Wybierz rodzaj pytania</font></a>
 </button>
 </ul>

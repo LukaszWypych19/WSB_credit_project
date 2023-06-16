@@ -3,10 +3,20 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'game/style.css' %}">
+<span style="color: white">
+    <span style="font-size:x-large">
+
 <h2>Log In</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Log In</button>
+  <button type="submit"><font size="4">Log In</font></button>
 </form>
 {% endblock %}
+
+    </span>
+</span>
