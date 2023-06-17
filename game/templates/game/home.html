@@ -12,11 +12,16 @@
 
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
+<br>
+<br>
+<button style="margin-bottom:30px;" type="button">
+<a href="{% url 'game:index' %}"><font size="4">Start Your Quiz Game!</font></a>
+</button><br>
 
-Start Your Quiz Game!
-<p><a href="{% url 'index' %}"></a></p><br>
+<button style="margin-bottom:30px;" type="button">
+<a href="{% url 'logout' %}"><font size="4">Log Out</font></a>
+</button>
 
-<p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
  <h2><p>You are not logged in</p></h2>
 
