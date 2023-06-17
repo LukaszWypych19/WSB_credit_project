@@ -20,7 +20,13 @@ kolejnego kraju (lub stolicy) oraz zestawu odpowiedzi.
 - IDE - PyCharm w wersji 20231.1.2
 
 ## Uruchomienie
-Aby uruchomić aplikację "Capitals" należy zainstalować powyższe technologie oraz przeglądarkę internetową
+Aby uruchomić aplikację należy:
+- zainstalować Pythona w wersji 3.11
+- zainstalować menedżera zależności Poetry w wersji 1.5.1
+- ściągnąć aplikację quiz np. z GitHub (https://github.com/LukaszWypych19/projekt_zaliczeniowy_WSB)
+- otworzyć wiersz poleceń i przejść do głównego katalogu ściągniętej aplikacji, następnie wpisać polecenie poetry install aby zainstalować wszystkie potrzebne paczki i zależnosci między nimi
+- po zakończeniu instalacji, w wierszu poleceń należy wpisać polecenie poetry run python manage.py runserver
+- otworzyć dowolną przeglądarke i wpisać adres 127.0.0.1:8000
 
 ## Pomysły na rozwój projektu
 Aplikacja internetowa „Capitals” może być rozwijana w kilku kierunkach takich jak np.:
