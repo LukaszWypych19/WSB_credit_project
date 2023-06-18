@@ -9,14 +9,8 @@ packages = [{include = "projekt_zaliczeniowy_wsb"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 Django = "^4.2.2"
-asgiref = "^3.7.2"
-mysql-connector-python = "^8.0.33"
 mysqlclient = "^2.1.1"
-pip = "^23.1.2"
-sqlparse = "^0.4.4"
-tzdata = "^2023.3"
-wheel = "^0.40.0"
-setuptools = "^67.8.0"
+mysql-connector-python = "^8.0.33"
 
 
 [build-system]
